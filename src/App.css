@@ -48,6 +48,7 @@ small {
   border-radius: 20px;
   border: 1px solid #ddd;
   margin-bottom: 1rem;
+  outline: none;
 }
 
 .button {
@@ -59,6 +60,7 @@ small {
   font-size: 1.4rem;
   cursor: pointer;
   transition: background-color 250ms;
+  outline: none;
 }
 
 .button:hover {
