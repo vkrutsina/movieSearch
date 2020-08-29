@@ -101,8 +101,13 @@ small {
   display: block;
 }
 
-.like-icon {
+.like-icon, .vote-icon {
  
   font-size: 2.0rem;
+  margin: .5rem;
   
+}
+
+.vote-icon {
+  color: gray;
 }
