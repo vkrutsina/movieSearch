@@ -1,8 +1,28 @@
-import React from 'react';
+/* eslint-disable react-hooks/rules-of-hooks */
+import React, {useState} from 'react';
+import { faHeart } from "@fortawesome/free-regular-svg-icons";
+import { faVoteYea } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function movieCard({ movie }) {
+  const [like, setLike] = useState('gray');
+  const [vote, setVote] = useState('gray')
+
+  const likeChange = (e) => {
+    if(like === 'gray') setLike('#FE938C'); 
+    if(like === '#FE938C') setLike('gray');
+  }
+
+  const voteChange = (e) => {
+    if(vote === 'gray') setVote('#38618C');
+    if(vote === '#38618C') setVote('gray');
+  }
+
   return (
+    
     <div className="card" key={movie.id}>
+      <FontAwesomeIcon className='like-icon' icon={faHeart} style={{color: like}} onClick={likeChange} />
+      <FontAwesomeIcon className='vote-icon' icon={faVoteYea} style={{color: vote}} onClick={voteChange}/>
       <img
         className="card--image"
         src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${movie.poster_path}`}
@@ -16,8 +36,10 @@ export default function movieCard({ movie }) {
         <p>
           <small>RATING: {movie.vote_average}</small>
         </p>
-        <p class="card-desc">{movie.overview}</p>
+        <p className="card-desc">{movie.overview}</p>
       </div>
     </div>
   );
 }
+
+

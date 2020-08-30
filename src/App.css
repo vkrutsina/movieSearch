@@ -100,3 +100,14 @@ small {
   margin: 0 auto;
   display: block;
 }
+
+.like-icon, .vote-icon {
+ 
+  font-size: 2.0rem;
+  margin: .5rem;
+  
+}
+
+.vote-icon {
+  color: gray;
+}
