@@ -35,7 +35,7 @@ export default function searchMovies() {
           type="text"
           className="input"
           name="query"
-          placeholder="search here"
+          placeholder="search for a movie..."
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         ></input>
