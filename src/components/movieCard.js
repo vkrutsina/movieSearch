@@ -12,16 +12,11 @@ export default function movieCard({ movie }) {
   const likeChange = (e) => {
     if (like === 'gray') {
       setLike('#FE938C');
-      // localStorage.setItem(`${movie.name}`, movie.name);
-      // console.log('localStorage', localStorage);
-      // console.log('---', localStorage.getItem(movie.name));
 
       setLiked(...liked, movie.name);
     }
     if (like === '#FE938C') {
       setLike('gray');
-      // localStorage.removeItem(movie.name);
-      // console.log('localStorage', localStorage);
     }
   };
 
