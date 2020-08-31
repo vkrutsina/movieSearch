@@ -101,13 +101,34 @@ small {
   display: block;
 }
 
-.like-icon, .vote-icon {
- 
-  font-size: 2.0rem;
-  margin: .5rem;
-  
+.like-icon,
+.vote-icon {
+  font-size: 2rem;
+  margin: 0.5rem;
 }
 
 .vote-icon {
   color: gray;
+}
+
+.list-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.liked-list {
+  margin-top: 4rem;
+  margin-left: 1rem;
+  background-color: white;
+  height: 61rem;
+  width: 61rem;
+  border-radius: 12px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
+}
+
+.liked-movies-title {
+  font-size: 1.2rem;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 500;
 }
