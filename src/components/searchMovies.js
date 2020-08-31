@@ -11,7 +11,8 @@ export default function searchMovies(props) {
   const [movies, setMovies] = useState([]);
 
   const [isBottom, setIsBottom] = useState(false);
-  let page = 2;
+
+  const [page, setPage] = useState(2);
 
   const searchMovies = async (e) => {
     e.preventDefault();
@@ -49,11 +50,13 @@ export default function searchMovies(props) {
   useEffect(() => {
     if (isBottom) {
       addMore();
+      setIsBottom(false);
     }
   }, [isBottom]);
 
   const addMore = async () => {
-    console.log('page', page);
+    setIsBottom(false);
+    console.log('pageADDMORE', page);
     const key = process.env.REACT_APP_TMDB_API_KEY;
 
     const url = `https://api.themoviedb.org/3/search/movie?api_key=${key}&language=en-US&query=${query}&page=${page}&include_adult=false`;
@@ -62,13 +65,8 @@ export default function searchMovies(props) {
       const res = await fetch(url);
       const data = await res.json();
       let hi = movies.concat(data.results);
-      console.log('hi', hi);
       setMovies(hi);
-      page++;
-      console.log('movies', movies);
-      console.log('page', page);
-      setIsBottom(false);
-      console.log('isBottom', isBottom);
+      setPage(page + 1);
     } catch (error) {
       console.error(error);
     }
@@ -97,7 +95,9 @@ export default function searchMovies(props) {
           {movies.map((movie) => (
             <MovieCard movie={movie} key={movie.id} />
           ))}
-          {isBottom && 'More movies...'}
+          <div className="inf-message">
+            {isBottom && 'Loading More Movies...'}
+          </div>
         </div>
       </div>
     </>
