@@ -9,6 +9,7 @@ export default function likedMovies({ liked }) {
           {liked.map((idx) => (
             <li className="each-liked-movie" key={idx}>
               {idx}
+              {/* <span className="remove">❌</span> */}
             </li>
           ))}
         </ul>
