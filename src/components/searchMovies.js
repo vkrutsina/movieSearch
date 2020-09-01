@@ -9,6 +9,7 @@ export default function searchMovies(props) {
   const [movies, setMovies] = useState([]);
   const [isBottom, setIsBottom] = useState(false);
   const [page, setPage] = useState(2);
+  const [tryMessage, setTryMessage] = useState('');
 
   const searchMovies = async (e) => {
     e.preventDefault();
@@ -16,6 +17,12 @@ export default function searchMovies(props) {
     const key = process.env.REACT_APP_TMDB_API_KEY;
 
     const url = `https://api.themoviedb.org/3/search/movie?api_key=${key}&language=en-US&query=${query}&page=1&include_adult=false`;
+    if (query.length === 0) {
+      setTryMessage('oops! must include search parameters');
+      return;
+    } else {
+      setTryMessage('');
+    }
     try {
       const res = await fetch(url);
       const data = await res.json();
@@ -78,9 +85,7 @@ export default function searchMovies(props) {
   return (
     <>
       <form className="form" onSubmit={searchMovies}>
-        <label htmlFor="query" className="label">
-          Movie Name
-        </label>
+        <label htmlFor="query" className="label"></label>
         <input
           type="text"
           className="input"
@@ -93,6 +98,7 @@ export default function searchMovies(props) {
           Search
         </button>
       </form>
+      <div className="try-message">{tryMessage}</div>
       <div className="list-container">
         <div className="card-list">
           {movies.map((movie) => (

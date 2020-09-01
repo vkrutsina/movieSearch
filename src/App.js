@@ -28,6 +28,9 @@ function App() {
       </div>
       <div className="container">
         <h1 className="title">Movie Search</h1>
+        <p className="subtitle">
+          Discover, Save, and Nominate your favorite films here
+        </p>
         <SearchMovies changeLiked={changeLiked} changeVoted={changeVoted} />
       </div>
     </>
