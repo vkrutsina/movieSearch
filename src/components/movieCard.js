@@ -27,10 +27,10 @@ export default function movieCard({
   const voteChange = (e) => {
     e.preventDefault();
     if (vote === 'gray') {
-      setVote('#38618C');
+      setVote('#7AC74F');
       changeVotedMovies(movie.title);
     }
-    if (vote === '#38618C') setVote('gray');
+    if (vote === '#7AC74F') setVote('gray');
   };
 
   return (

@@ -5,13 +5,9 @@ import React, { useState, useEffect } from 'react';
 import MovieCard from './movieCard';
 
 export default function searchMovies(props) {
-  console.log('props', props);
   const [query, setQuery] = useState('');
-
   const [movies, setMovies] = useState([]);
-
   const [isBottom, setIsBottom] = useState(false);
-
   const [page, setPage] = useState(2);
 
   const searchMovies = async (e) => {
