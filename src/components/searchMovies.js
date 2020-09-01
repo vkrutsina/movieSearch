@@ -3,7 +3,6 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import React, { useState, useEffect } from 'react';
 import MovieCard from './movieCard';
-// import LikedMovies from './likedMovies';
 
 export default function searchMovies(props) {
   const [query, setQuery] = useState('');
@@ -72,6 +71,10 @@ export default function searchMovies(props) {
     }
   };
 
+  const changeLikedMovies = (title) => {
+    props.changeLiked(title);
+  };
+
   return (
     <>
       <form className="form" onSubmit={searchMovies}>
@@ -93,7 +96,11 @@ export default function searchMovies(props) {
       <div className="list-container">
         <div className="card-list">
           {movies.map((movie) => (
-            <MovieCard movie={movie} key={movie.id} />
+            <MovieCard
+              movie={movie}
+              key={movie.id}
+              changeLikedMovies={changeLikedMovies}
+            />
           ))}
           <div className="inf-message">
             {isBottom && 'Loading More Movies...'}
@@ -103,7 +110,3 @@ export default function searchMovies(props) {
     </>
   );
 }
-
-// <div className="liked-list">
-//   <LikedMovies movies={movies} />
-// </div>

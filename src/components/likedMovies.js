@@ -1,9 +1,18 @@
 import React from 'react';
 
-export default function likedMovies() {
+export default function likedMovies({ liked }) {
   return (
-    <div>
+    <div className="liked-container ">
       <p className="liked-movies-title">Liked Movies</p>
+      <div className="liked-list">
+        <ul>
+          {liked.map((idx) => (
+            <li className="each-liked-movie" key={idx}>
+              {idx}
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }

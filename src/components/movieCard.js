@@ -4,16 +4,15 @@ import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import { faVoteYea } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-export default function movieCard({ movie }) {
+export default function movieCard({ movie, liked, changeLikedMovies }) {
   const [like, setLike] = useState('gray');
   const [vote, setVote] = useState('gray');
-  const [liked, setLiked] = useState([]);
 
   const likeChange = (e) => {
+    e.preventDefault();
+    changeLikedMovies(movie.title);
     if (like === 'gray') {
       setLike('#FE938C');
-
-      setLiked(...liked, movie.name);
     }
     if (like === '#FE938C') {
       setLike('gray');
