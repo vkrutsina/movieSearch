@@ -5,6 +5,7 @@ import React, { useState, useEffect } from 'react';
 import MovieCard from './movieCard';
 
 export default function searchMovies(props) {
+  console.log('props', props);
   const [query, setQuery] = useState('');
 
   const [movies, setMovies] = useState([]);
@@ -75,6 +76,9 @@ export default function searchMovies(props) {
     props.changeLiked(title);
   };
 
+  const changeVotedMovies = (title) => {
+    props.changeVoted(title);
+  };
   return (
     <>
       <form className="form" onSubmit={searchMovies}>
@@ -100,6 +104,7 @@ export default function searchMovies(props) {
               movie={movie}
               key={movie.id}
               changeLikedMovies={changeLikedMovies}
+              changeVotedMovies={changeVotedMovies}
             />
           ))}
           <div className="inf-message">

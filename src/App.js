@@ -6,9 +6,14 @@ import VotedMovies from './components/votedMovies';
 
 function App() {
   const [liked, setLiked] = useState([]);
+  const [voted, setVoted] = useState([]);
 
   const changeLiked = (title) => {
     setLiked((prevState) => [...prevState, title]);
+  };
+
+  const changeVoted = (title) => {
+    setVoted((prevState) => [...prevState, title]);
   };
 
   return (
@@ -18,12 +23,12 @@ function App() {
           <LikedMovies liked={liked} />
         </div>
         <div className="voted-movies">
-          <VotedMovies />
+          <VotedMovies voted={voted} />
         </div>
       </div>
       <div className="container">
         <h1 className="title">Movie Search</h1>
-        <SearchMovies changeLiked={changeLiked} />
+        <SearchMovies changeLiked={changeLiked} changeVoted={changeVoted} />
       </div>
     </>
   );
